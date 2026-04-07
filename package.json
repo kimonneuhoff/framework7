@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "/*============ Build ============*/": "============",
-    "build:dev": "cross-env-shell NODE_ENV=development \"gulp build-core && gulp build-vue && gulp build-react && gulp build-svelte\"",
-    "build:prod": "cross-env-shell NODE_ENV=production \"gulp build-core && gulp build-vue && gulp build-react && gulp build-svelte\"",
+    "build:dev": "cross-env-shell NODE_ENV=development \"gulp build-core && gulp build-svelte\"",
+    "build:prod": "cross-env-shell NODE_ENV=production \"gulp build-core && gulp build-svelte\"",
     "build-core-icons-font": "python3 ./scripts/icon-font/generate.py && ttf2woff ./src/core/icons/font/framework7-core-icons.ttf ./src/core/icons/font/framework7-core-icons.woff",
     "build-core:dev": "cross-env NODE_ENV=development CORE_BUILD_ONLY_UMD=true gulp build-core",
     "build-core:prod": "cross-env NODE_ENV=production gulp build-core",
@@ -66,6 +66,7 @@
     "last 5 Firefox versions"
   ],
   "dependencies": {
+    "celestial": "link:../../AppData/Local/pnpm/global/5/node_modules/imagine-ui",
     "dom7": "^4.0.6",
     "htm": "^3.1.1",
     "path-to-regexp": "^6.2.0",

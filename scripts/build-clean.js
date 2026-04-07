@@ -1,6 +1,27 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-const exec = require('exec-sh');
+const fs = require('node:fs/promises');
+const path = require('node:path');
+const glob = require('glob');
 const getOutput = require('./get-output.js');
+
+async function removeMatches(output, patterns, filterFn) {
+  const matches = new Set();
+
+  patterns.forEach((pattern) => {
+    glob.sync(pattern, { cwd: output, dot: true }).forEach((match) => {
+      if (!filterFn || filterFn(match)) matches.add(match);
+    });
+  });
+
+  await Promise.all(
+    Array.from(matches).map((match) =>
+      fs.rm(path.join(output, match), {
+        recursive: true,
+        force: true,
+      }),
+    ),
+  );
+}
 
 async function buildClean(project, cb) {
   if (process.env.NODE_ENV === 'development' && project !== 'core') {
@@ -8,9 +29,13 @@ async function buildClean(project, cb) {
     return;
   }
   const output = `${getOutput()}/${project}`;
-  const toRemove = [
-    "find **/*.js -type f -not -name 'postinstall.js' -print0 | xargs -0  -I {} rm -v {}",
-    "find *.js -type f -not -name 'postinstall.js' -print0 | xargs -0  -I {} rm -v {}",
+
+  await removeMatches(
+    output,
+    ['**/*.js', '*.js'],
+    (match) => path.basename(match) !== 'postinstall.js',
+  );
+  await removeMatches(output, [
     '**/*.ts',
     '*.ts',
     '**/*.svelte',
@@ -30,9 +55,7 @@ async function buildClean(project, cb) {
     'types/components',
     'types/modules',
     'types/shared',
-  ].map((command) => (command.includes('find') ? command : `rm -rf ${command}`));
-
-  await exec.promise(`cd ${output} && ${toRemove.join(' && ')}`);
+  ]);
 
   if (cb) cb();
 }

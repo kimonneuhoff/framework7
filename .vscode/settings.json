@@ -2,5 +2,22 @@
   "editor.formatOnSave": true,
   "eslint.enable": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": ["javascript", "javascriptreact", "svelte", "typescript"]
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "svelte",
+    "typescript"
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/flutter/ephemeral": true,
+    "**/Flutter/ephemeral": true,
+    "**/.symlinks": true,
+    "**/.plugin_symlinks": true
+  },
+  "hide-files.files": []
 }
