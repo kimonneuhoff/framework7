@@ -71,7 +71,9 @@
     }
 
     const alias =
-      legacyIconAliases[stripped] || legacyIconAliases[stripped.replace(/-/g, '_')] || legacyIconAliases[stripped.replace(/_/g, '-')];
+      legacyIconAliases[stripped] ||
+      legacyIconAliases[stripped.replace(/-/g, '_')] ||
+      legacyIconAliases[stripped.replace(/_/g, '-')];
     if (alias && iconMap.has(`${alias}:${DEFAULT_STYLE}`)) return alias;
 
     return undefined;
@@ -94,6 +96,15 @@
 
   const iconClasses = $derived(classNames(className, 'icon', colorClasses(restProps)));
 
+  const celestialSizeClass = $derived.by(() => {
+    if (typeof size === 'undefined' || size === null || size === '') return 'size-6';
+    if (typeof size === 'string') {
+      const trimmed = size.trim();
+      if (trimmed.startsWith('size-')) return trimmed;
+    }
+    return '';
+  });
+
   const iconSize = $derived(
     typeof size === 'number' || parseFloat(size) === size * 1 ? `${size}px` : size,
   );
@@ -106,7 +117,7 @@
   );
 </script>
 
-<span
+<i
   style={iconStyle}
   class={iconClasses}
   bind:this={el}
@@ -116,14 +127,14 @@
   {#if resolvedIconName}
     <CelestialIcon
       name={resolvedIconName}
-      size=""
+      size={celestialSizeClass}
       color=""
       class="framework7-imagine-icon"
       decorative={true}
     />
   {/if}
   {@render children?.()}
-</span>
+</i>
 
 <style>
   .icon {
@@ -134,8 +145,6 @@
   }
 
   :global(.framework7-imagine-icon) {
-    width: 100%;
-    height: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
