@@ -31,7 +31,7 @@
     <Link
       href={backLinkUrl || '#'}
       back
-      icon="icon-back"
+      icon="arrow-left"
       force={backLinkForce || undefined}
       class={!backLinkText ? 'icon-only' : undefined}
       text={backLinkText}
