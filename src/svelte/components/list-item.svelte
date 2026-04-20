@@ -1,5 +1,6 @@
 <script>
   import { onMount, onDestroy, getContext } from 'svelte';
+  import { Spinner } from 'celestial';
   import {
     colorClasses,
     routerClasses,
@@ -60,6 +61,7 @@
     readonly = undefined,
     required = undefined,
     disabled = undefined,
+    loading = false,
     virtualListIndex = undefined,
     routeProps = undefined,
 
@@ -173,6 +175,31 @@
   const hasText = $derived(typeof text !== 'undefined');
   const hasAfter = $derived(typeof after !== 'undefined' || typeof badge !== 'undefined');
   /* eslint-enable no-undef */
+
+  let delayedLoading = $state(false);
+  let loadingTimer = null;
+  const hasVisualMedia = $derived(hasMedia || delayedLoading);
+
+  $effect(() => {
+    if (loading && !delayedLoading) {
+      loadingTimer = setTimeout(() => {
+        delayedLoading = true;
+      }, 300);
+    } else if (!loading) {
+      if (loadingTimer) {
+        clearTimeout(loadingTimer);
+        loadingTimer = null;
+      }
+      delayedLoading = false;
+    }
+
+    return () => {
+      if (loadingTimer) {
+        clearTimeout(loadingTimer);
+        loadingTimer = null;
+      }
+    };
+  });
 
   let initialWatchedOpened = false;
   function watchSwipeoutOpened(opened) {
@@ -350,6 +377,20 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 
+{#snippet itemMedia()}
+  {#if hasVisualMedia}
+    <div class="item-media">
+      {#if delayedLoading}
+        <Spinner />
+      {:else if typeof media === 'function'}
+        {@render media?.()}
+      {:else if typeof media === 'string'}
+        <img src={media} />
+      {/if}
+    </div>
+  {/if}
+{/snippet}
+
 <!-- svelte-ignore a11y-missing-attribute -->
 {#if groupTitle}
   <li
@@ -402,15 +443,7 @@
               {#if isSortable && sortable !== false && isSortableOpposite}
                 <div class="sortable-handler" />
               {/if}
-              {#if hasMedia}
-                <div class="item-media">
-                  {#if typeof media === 'function'}
-                    {@render media?.()}
-                  {:else if typeof media === 'string'}
-                    <img src={media} />
-                  {/if}
-                </div>
-              {/if}
+              {@render itemMedia()}
               <div bind:this={innerEl} class="item-inner">
                 <SnippetRender content={innerStart} />
                 {#if isMedia}
@@ -520,15 +553,7 @@
                 onchange={onChange}
               />
               <i class={`icon icon-${radio ? 'radio' : 'checkbox'}`} />
-              {#if hasMedia}
-                <div class="item-media">
-                  {#if typeof media === 'function'}
-                    {@render media?.()}
-                  {:else if typeof media === 'string'}
-                    <img src={media} />
-                  {/if}
-                </div>
-              {/if}
+              {@render itemMedia()}
               <div bind:this={innerEl} class="item-inner">
                 <SnippetRender content={innerStart} />
                 {#if isMedia}
@@ -621,15 +646,7 @@
               {#if isSortable && sortable !== false && isSortableOpposite}
                 <div class="sortable-handler" />
               {/if}
-              {#if hasMedia}
-                <div class="item-media">
-                  {#if typeof media === 'function'}
-                    {@render media?.()}
-                  {:else if typeof media === 'string'}
-                    <img src={media} />
-                  {/if}
-                </div>
-              {/if}
+              {@render itemMedia()}
               <div bind:this={innerEl} class="item-inner">
                 <SnippetRender content={innerStart} />
                 {#if isMedia}
@@ -734,15 +751,7 @@
           {#if isSortable && sortable !== false && isSortableOpposite}
             <div class="sortable-handler" />
           {/if}
-          {#if hasMedia}
-            <div class="item-media">
-              {#if typeof media === 'function'}
-                {@render media?.()}
-              {:else if typeof media === 'string'}
-                <img src={media} />
-              {/if}
-            </div>
-          {/if}
+          {@render itemMedia()}
           <div bind:this={innerEl} class="item-inner">
             <SnippetRender content={innerStart} />
             {#if isMedia}
@@ -851,15 +860,7 @@
             onchange={onChange}
           />
           <i class={`icon icon-${radio ? 'radio' : 'checkbox'}`} />
-          {#if hasMedia}
-            <div class="item-media">
-              {#if typeof media === 'function'}
-                {@render media?.()}
-              {:else if typeof media === 'string'}
-                <img src={media} />
-              {/if}
-            </div>
-          {/if}
+          {@render itemMedia()}
           <div bind:this={innerEl} class="item-inner">
             <SnippetRender content={innerStart} />
             {#if isMedia}
@@ -952,15 +953,7 @@
           {#if isSortable && sortable !== false && isSortableOpposite}
             <div class="sortable-handler" />
           {/if}
-          {#if hasMedia}
-            <div class="item-media">
-              {#if typeof media === 'function'}
-                {@render media?.()}
-              {:else if typeof media === 'string'}
-                <img src={media} />
-              {/if}
-            </div>
-          {/if}
+          {@render itemMedia()}
           <div bind:this={innerEl} class="item-inner">
             <SnippetRender content={innerStart} />
             {#if isMedia}
