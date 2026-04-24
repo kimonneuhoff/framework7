@@ -54,7 +54,6 @@ import Searchbar from './pages/searchbar.vue';
 import SearchbarExpandable from './pages/searchbar-expandable.vue';
 import Segmented from './pages/segmented.vue';
 import SheetModal from './pages/sheet-modal.vue';
-import Skeleton from './pages/skeleton.vue';
 import SmartSelect from './pages/smart-select.vue';
 import Sortable from './pages/sortable.vue';
 import Stepper from './pages/stepper.vue';
@@ -224,7 +223,6 @@ export default [
   { path: '/searchbar-expandable/', component: SearchbarExpandable },
   { path: '/segmented/', component: Segmented },
   { path: '/sheet-modal/', component: SheetModal },
-  { path: '/skeleton/', component: Skeleton },
   { path: '/smart-select/', component: SmartSelect },
   { path: '/sortable/', component: Sortable },
   { path: '/stepper/', component: Stepper },

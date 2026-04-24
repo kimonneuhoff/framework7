@@ -23,9 +23,6 @@ importers:
       path-to-regexp:
         specifier: ^6.2.0
         version: 6.3.0
-      skeleton-elements:
-        specifier: ^4.0.1
-        version: 4.0.1
       ssr-window:
         specifier: ^5.0.1
         version: 5.0.1
@@ -4132,9 +4129,6 @@ packages:
 
   signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
-
-  skeleton-elements@4.0.1:
-    resolution: {integrity: sha512-T7YSF/Vu/raUcM6v3HiE4VSY/OvrNflg8Dur3Zza6VVJkq4slxm4pJRpGLNhoOfblIPZLQKh1cu7ADKveyqm/Q==}
 
   slash@2.0.0:
     resolution: {integrity: sha512-ZYKh3Wh2z1PpEXWr0MpSBZ0V6mZHAQfYevttO11c51CaWjGTaadiKZ+wVt1PbMlDV5qhMFslpZCemhwOK7C89A==}
@@ -9258,8 +9252,6 @@ snapshots:
       side-channel-weakmap: 1.0.2
 
   signal-exit@3.0.7: {}
-
-  skeleton-elements@4.0.1: {}
 
   slash@2.0.0: {}
 

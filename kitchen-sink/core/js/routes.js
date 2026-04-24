@@ -269,10 +269,6 @@ var routes = [
     componentUrl: './pages/sheet-modal.html',
   },
   {
-    path: '/skeleton/',
-    componentUrl: './pages/skeleton.html',
-  },
-  {
     path: '/smart-select/',
     url: './pages/smart-select.html',
   },

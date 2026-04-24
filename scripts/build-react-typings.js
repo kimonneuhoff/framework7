@@ -34,7 +34,7 @@ function generateComponentProps(propsContent) {
 }
 
 function generateComponentTypings(componentName, fileContent) {
-  if (componentName.includes('Swiper') || componentName.includes('Skeleton')) return fileContent;
+  if (componentName.includes('Swiper')) return fileContent;
   let imports = '';
   let props = '';
   let propsExtends = '';

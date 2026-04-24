@@ -96,9 +96,6 @@ const config = {
     // Gauge
     'gauge',
 
-    // Skeleton
-    'skeleton',
-
     // Color Picker
     'color-picker',
 

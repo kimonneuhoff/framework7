@@ -282,11 +282,6 @@
         <i class="icon icon-f7"></i>
       {/snippet}
     </ListItem>
-    <ListItem link="/skeleton/" title="Skeleton (Ghost) Elements">
-      {#snippet media()}
-        <i class="icon icon-f7"></i>
-      {/snippet}
-    </ListItem>
     <ListItem link="/smart-select/" title="Smart Select">
       {#snippet media()}
         <i class="icon icon-f7"></i>

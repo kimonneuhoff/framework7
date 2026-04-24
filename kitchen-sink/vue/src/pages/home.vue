@@ -272,11 +272,6 @@
           <f7-icon icon="icon-f7" />
         </template>
       </f7-list-item>
-      <f7-list-item link="/skeleton/" title="Skeleton (Ghost) Elements">
-        <template #media>
-          <f7-icon icon="icon-f7" />
-        </template>
-      </f7-list-item>
       <f7-list-item link="/smart-select/" title="Smart Select">
         <template #media>
           <f7-icon icon="icon-f7" />

@@ -70,7 +70,6 @@
     "dom7": "^4.0.6",
     "htm": "^3.1.1",
     "path-to-regexp": "^6.2.0",
-    "skeleton-elements": "^4.0.1",
     "ssr-window": "^5.0.1",
     "swiper": "^12.0.3"
   },

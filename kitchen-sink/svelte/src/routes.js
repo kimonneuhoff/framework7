@@ -54,7 +54,6 @@ import Searchbar from './pages/searchbar.svelte';
 import SearchbarExpandable from './pages/searchbar-expandable.svelte';
 import Segmented from './pages/segmented.svelte';
 import SheetModal from './pages/sheet-modal.svelte';
-import Skeleton from './pages/skeleton.svelte';
 import SmartSelect from './pages/smart-select.svelte';
 import Sortable from './pages/sortable.svelte';
 import Stepper from './pages/stepper.svelte';
@@ -388,10 +387,6 @@ export default [
   {
     path: '/sheet-modal/',
     component: SheetModal,
-  },
-  {
-    path: '/skeleton/',
-    component: Skeleton,
   },
   {
     path: '/smart-select/',

@@ -53,7 +53,6 @@ import Searchbar from './pages/searchbar.jsx';
 import SearchbarExpandable from './pages/searchbar-expandable.jsx';
 import Segmented from './pages/segmented.jsx';
 import SheetModal from './pages/sheet-modal.jsx';
-import Skeleton from './pages/skeleton.jsx';
 import SmartSelect from './pages/smart-select.jsx';
 import Sortable from './pages/sortable.jsx';
 import Stepper from './pages/stepper.jsx';
@@ -222,7 +221,6 @@ export default [
   { path: '/searchbar-expandable/', component: SearchbarExpandable },
   { path: '/segmented/', component: Segmented },
   { path: '/sheet-modal/', component: SheetModal },
-  { path: '/skeleton/', component: Skeleton },
   { path: '/smart-select/', component: SmartSelect },
   { path: '/sortable/', component: Sortable },
   { path: '/stepper/', component: Stepper },

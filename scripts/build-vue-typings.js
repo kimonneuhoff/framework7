@@ -143,7 +143,7 @@ function generateComponentProps(fileContent) {
 }
 
 function generateComponentTypings(componentName, fileContent) {
-  if (componentName.includes('Swiper') || componentName.includes('Skeleton')) {
+  if (componentName.includes('Swiper')) {
     return fileContent.replace('<script>', '').replace('</script>', '');
   }
 

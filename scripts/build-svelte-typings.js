@@ -80,7 +80,7 @@ function generateComponentProps(propsContent, slots, events) {
 }
 
 function generateComponentTypings(componentName, fileContent, reactFileContent) {
-  if (componentName.includes('Swiper') || componentName.includes('Skeleton')) return fileContent;
+  if (componentName.includes('Swiper')) return fileContent;
   let imports = '';
   let props = '';
   let propsExtends = '';
