@@ -2,12 +2,7 @@
   "editor.formatOnSave": true,
   "eslint.enable": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "svelte",
-    "typescript"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "svelte", "typescript"],
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
